@@ -4,6 +4,7 @@ namespace CliTools\Console\Command\System;
 
 /*
  * CliTools Command
+ * Copyright (C) 2016 WebDevOps.io
  * Copyright (C) 2015 Markus Blaschke <markus@familie-blaschke.net>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -226,7 +227,6 @@ class BannerCommand extends \CliTools\Console\Command\AbstractCommand implements
                 $mailboxConf = parse_url($mailboxUri);
 
                 $hostname = $this->buildMailboxServerString($mailboxConf);
-                $options  = $this->buildMailboxServerOptions($mailboxConf);
                 $username = $mailboxConf['user'];
                 $password = $mailboxConf['pass'];
 
@@ -240,7 +240,6 @@ class BannerCommand extends \CliTools\Console\Command\AbstractCommand implements
                     throw new \RuntimeException('Mailcheck failed');
                 }
             } catch (\Exception $e) {
-                var_dump($e->getMessage());exit;
                 $ret = 'error';
             }
         }
